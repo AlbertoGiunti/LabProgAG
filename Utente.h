@@ -13,13 +13,13 @@ class Utente {
 public:
     explicit Utente(const std::string &nomeUtente);
     //metodo per aggiungere una lista alla lista delle liste
-    void addListaSpesa(ListaSpesa &l);
+    void addListaSpesa(ListaSpesa *l);
 
 
 
 private:
     std::string nomeUtente;
-    std::list<ListaSpesa> liste;
+    std::list<ListaSpesa*> liste;
 };
 
 

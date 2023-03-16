@@ -10,19 +10,21 @@
 #include <gtest/gtest.h>
 
 
-class ListaSpesa {
+class ListaSpesa/*: public Subject*/ {
 public:
     explicit ListaSpesa(const std::string &nomeLista);
 
-    void addProdotto(Prodotto &p);
+    void addProdotto(Prodotto *p);
 
-    void modifyProdotto(Prodotto &p, int q);
+    void modifyProdotto(Prodotto *p, int q);
+
+    void removeProdotto(Prodotto *p);
 
     virtual ~ListaSpesa();
 
 private:
     std::string nomeLista;
-    std::list<Prodotto> prodotti;
+    std::list<Prodotto*> prodotti;
 };
 
 

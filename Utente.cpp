@@ -2,25 +2,15 @@
 // Created by alberto on 16/03/23.
 //
 
-#ifndef LABPROGAG_UTENTE_H
-#define LABPROGAG_UTENTE_H
+#include "Utente.h"
 #include <iostream>
 #include <list>
 #include "ListaSpesa.h"
 
+Utente::Utente(const std::string &nomeUtente) {
 
-class Utente {
-public:
-    explicit Utente(const std::string &nomeUtente);
-    //metodo per aggiungere una lista alla lista delle liste
-    void addListaSpesa(ListaSpesa &l);
+}
 
-
-
-private:
-    std::string nomeUtente;
-    std::list<ListaSpesa> liste;
-};
-
-
-#endif //LABPROGAG_UTENTE_H
+void Utente::addListaSpesa(ListaSpesa *l) {
+    liste.push_back(l);
+}
