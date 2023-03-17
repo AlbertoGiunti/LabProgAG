@@ -8,21 +8,23 @@
 
 class Prodotto {
 public:
-    Prodotto(const std::string &nome, const std::string &categoria, int quantita);
+    //costruttore del prodotto
+    Prodotto(const std::string nome, int quantita);
+    //metodo per ottenere il nome del prodotto
+    const std::string getNome() const;
 
-    const std::string &getNome() const;
-
+    //metodo per ottenere la quantità del prodotto
     int getQuantita() const;
 
+    //metodo per modificare la quantità del prodotto
     void setQuantita(int quantita);
 
+    //distruttore del prodotto
     virtual ~Prodotto();
 
 private:
     std::string nome;
-    std::string categoria;
     int quantita;
-
 };
 
 
