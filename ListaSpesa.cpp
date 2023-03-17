@@ -5,15 +5,15 @@
 #include "ListaSpesa.h"
 
 
-//Costruttore della lista della spesa
+//costruttore della lista della spesa
 ListaSpesa::ListaSpesa(const std::string &nomeLista) : nomeLista(nomeLista) {}
 
-//Metodo che aggiunge elementi in coda alla lista della spesa
+//implementazione metodo che aggiunge elementi in coda alla lista della spesa
 void ListaSpesa::addProdotto(Prodotto *p) {
     prodotti.push_back(p);
 }
 
-//Metodo che modifica un prodotto della lista della spesa, se la nuova quantità del prodotto (q) è 0 cancella il prodotto dalla lista, se la lista è vuota cancella la lista.
+//implementazione metodo che modifica un prodotto della lista della spesa, se la nuova quantità del prodotto (q) è 0 cancella il prodotto dalla lista, se la lista è vuota cancella la lista.
 void ListaSpesa::modifyProdotto(Prodotto *p, int q) {
     bool modificato = false;
     for(auto it = prodotti.begin(); it != prodotti.end() && !modificato; it++){
@@ -35,15 +35,33 @@ void ListaSpesa::modifyProdotto(Prodotto *p, int q) {
     }
 }
 
-//Metodo per rimuovere un prodotto
+//implementazione metodo per rimuovere un prodotto
 void ListaSpesa::removeProdotto(Prodotto *p) {
     prodotti.remove(p);
-    if(prodotti.size() == 0)
+    if(prodotti.empty())
         delete this;
 }
+//Implementazione del metodo attach
+void ListaSpesa::attach(Observer *o) {
+    observers.push_back(o);
+}
+
+//implementazione del metodo detach
+void ListaSpesa::detach(Observer *o) {
+    observers.remove(o);
+}
+
+//implementazione del metodo notify
+void ListaSpesa::notify() {
+    for(auto it = observers.begin(); it != observers.end(); it++){
+        (*it)->update(this);
+    }
+}
+
 
 //Distruttore della lista della spesa
 ListaSpesa::~ListaSpesa() {
-
+    notify();
 }
+
 
