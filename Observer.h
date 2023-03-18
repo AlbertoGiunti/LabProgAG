@@ -4,7 +4,6 @@
 
 #ifndef LABPROGAG_OBSERVER_H
 #define LABPROGAG_OBSERVER_H
-#include "ListaSpesa.h"
 
 class ListaSpesa;
 

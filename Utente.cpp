@@ -7,9 +7,7 @@
 #include "ListaSpesa.h"
 
 //implementazione del costruttore dell'utente
-Utente::Utente(const std::string &nomeUtente) {
-
-}
+Utente::Utente(const std::string &nomeUtente): nomeUtente(nomeUtente) {}
 
 //implementazione del metodo addListaSpesa
 void Utente::addListaSpesa(ListaSpesa *l) {
@@ -27,3 +25,14 @@ void Utente::update(ListaSpesa *l) {
     this->removeListaSpesa(l);
 }
 
+//implementazione del metodo showListe
+void Utente::showListe() {
+    std::cout << "Elenco liste" << this->nomeUtente << ":" << std::endl;
+    for (auto i = liste.begin(); i != liste.end(); i++) {
+        std::cout << (*i)->getNomeLista() << std::endl;
+    }
+}
+
+//implementazione del distruttore dell'utente
+Utente::~Utente() {
+}

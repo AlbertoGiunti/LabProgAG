@@ -17,6 +17,9 @@ public:
     //costruttore della lista della spesa
     explicit ListaSpesa(const std::string &nomeLista);
 
+    //metodo per ottenere il nome della lista della spesa
+    const std::string getNomeLista() const;
+
     //metodo per aggiungere un prodotto alla lista dei prodotti
     void addProdotto(Prodotto *p);
 
@@ -25,6 +28,9 @@ public:
 
     //metodo per rimuovere un prodotto
     void removeProdotto(Prodotto *p);
+
+    //metodo per stampare la lista della spesa
+    void showListaSpesa();
 
     //implementazione del metodo attach
     void attach(Observer *o) override;

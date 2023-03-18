@@ -59,8 +59,23 @@ void ListaSpesa::notify() {
 }
 
 
+//implementazione metodo per stampare la lista della spesa
+void ListaSpesa::showListaSpesa() {
+    std::cout << "Lista della spesa: " << nomeLista <<std::endl;
+    std::cout << "Elenco prodotti: " << std::endl;
+    for(auto it = prodotti.begin(); it != prodotti.end(); it++){
+        std::cout << (*it)->getNome() << " " << (*it)->getQuantita() << std::endl;
+    }
+}
+
+//implementazione metodo per ottenere il nome della lista della spesa
+const std::string ListaSpesa::getNomeLista() const {
+    return nomeLista;
+}
+
 //Distruttore della lista della spesa
 ListaSpesa::~ListaSpesa() {
+    std::cout << "Lista della spesa: " << nomeLista << " eliminata" << std::endl;
     notify();
 }
 
