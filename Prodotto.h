@@ -10,6 +10,7 @@ class Prodotto {
 public:
     //costruttore del prodotto
     Prodotto(const std::string nome, int quantita);
+
     //metodo per ottenere il nome del prodotto
     const std::string getNome() const;
 

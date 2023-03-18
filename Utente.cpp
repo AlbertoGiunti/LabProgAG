@@ -22,7 +22,9 @@ void Utente::removeListaSpesa(ListaSpesa *l) {
 
 //implementazione del metodo update
 void Utente::update(ListaSpesa *l) {
+    l->detach(this);
     this->removeListaSpesa(l);
+    std::cout << "REMOVE " << this->nomeUtente << "  " << l->getNomeLista() << std::endl;
 }
 
 //implementazione del metodo showListe

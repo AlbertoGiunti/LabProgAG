@@ -12,7 +12,7 @@ int main() {
     Prodotto latte("Latte", 1);
     Prodotto pane("Pane", 1);
     Prodotto zucchero("Zucchero", 3);
-    Prodotto caffè("Caffè", 3);
+    Prodotto acqua("Acqua", 3);
     Prodotto farina("Farina", 4);
     Prodotto burro("Burro", 2);
 
@@ -34,7 +34,7 @@ int main() {
 
     l3->addProdotto(&pane);
     l3->addProdotto(&zucchero);
-    l3->addProdotto(&caffè);
+    l3->addProdotto(&acqua);
     l3->addProdotto(&formaggio);
     l3->showListaSpesa();
 
@@ -53,7 +53,7 @@ int main() {
     l5->addProdotto(&pane);
     l5->showListaSpesa();
 
-    Utente* u1 = new Utente("Niccolò");
+    Utente* u1 = new Utente("Mattia");
     Utente* u2 = new Utente("Giovanni");
     Utente* u3 = new Utente("Alberto");
 
@@ -61,20 +61,27 @@ int main() {
     u1->addListaSpesa(l2);
     u1->showListe();
 
-    u2->addListaSpesa(l2);
+    u2->addListaSpesa(l1);
     u2->addListaSpesa(l3);
     u2->addListaSpesa(l4);
     u2->showListe();
 
+    u3->addListaSpesa(l1);
     u3->addListaSpesa(l4);
     u3->addListaSpesa(l5);
     u3->showListe();
 
     //prova dell'observer
+
     l1->removeProdotto(&pasta);
-    l1->removeProdotto(&olio);
+    l1->modifyProdotto(&olio, 0);
+
     u1->showListe();
-    //Prima Niccolò ha sia Lista1 che Lista2, dopo aver rimosso i prodotti dalla Lista1, Niccolò non ha più Lista1
+    u2->showListe();
+    u3->showListe();
+    //fine prova
+
+    //Prima di terminare il programma, distruggo tutti gli oggetti
 
     return 0;
 }

@@ -21,16 +21,20 @@ void ListaSpesa::modifyProdotto(Prodotto *p, int q) {
             if(q == 0){
                 this->removeProdotto(p);
             }
-            else
+            else {
                 p->setQuantita(q);
+            }
             modificato = true;
             std::cout<<"Modifica effettuata" << std::endl;
         }
-        else
-            std::cout<<"L'elemento che vuoi modificare non è presente nella lista" << std::endl;
     }
+    if(!modificato){
+        std::cout<<"Prodotto non presente nella lista" << std::endl;
+    }
+
     //se prodotti è vuoto, cancella la lista
     if(prodotti.empty()){
+        notify();
         delete this;
     }
 }
@@ -38,8 +42,11 @@ void ListaSpesa::modifyProdotto(Prodotto *p, int q) {
 //implementazione metodo per rimuovere un prodotto
 void ListaSpesa::removeProdotto(Prodotto *p) {
     prodotti.remove(p);
-    if(prodotti.empty())
+    std::cout << "Prodotto " << p->getNome() << " rimosso" << std::endl;
+    if(prodotti.empty()) {
+        this->notify();
         delete this;
+    }
 }
 //Implementazione del metodo attach
 void ListaSpesa::attach(Observer *o) {
@@ -53,6 +60,7 @@ void ListaSpesa::detach(Observer *o) {
 
 //implementazione del metodo notify
 void ListaSpesa::notify() {
+    std::cout << "notify()" << std::endl;
     for(auto it = observers.begin(); it != observers.end(); it++){
         (*it)->update(this);
     }
@@ -76,7 +84,6 @@ const std::string ListaSpesa::getNomeLista() const {
 //Distruttore della lista della spesa
 ListaSpesa::~ListaSpesa() {
     std::cout << "Lista della spesa: " << nomeLista << " eliminata" << std::endl;
-    notify();
 }
 
 
