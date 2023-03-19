@@ -28,5 +28,4 @@ void Prodotto::setQuantita(int quantita) {
 
 //distruttore del prodotto
 Prodotto::~Prodotto() {
-    std::cout << "Prodotto " << nome << " distrutto" << std::endl;
 }

@@ -31,12 +31,6 @@ void ListaSpesa::modifyProdotto(Prodotto *p, int q) {
     if(!modificato){
         std::cout<<"Prodotto non presente nella lista" << std::endl;
     }
-
-    //se prodotti è vuoto, cancella la lista
-    if(prodotti.empty()){
-        notify();
-        delete this;
-    }
 }
 
 //implementazione metodo per rimuovere un prodotto
@@ -61,8 +55,10 @@ void ListaSpesa::detach(Observer *o) {
 //implementazione del metodo notify
 void ListaSpesa::notify() {
     std::cout << "notify()" << std::endl;
-    for(auto it = observers.begin(); it != observers.end(); it++){
-        (*it)->update(this);
+    for(auto it = observers.begin(); it != observers.end(); ) {
+        auto tt= it;
+        it++;
+        (*tt)->update(this);
     }
 }
 
