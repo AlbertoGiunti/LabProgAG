@@ -4,6 +4,7 @@
 
 #include "Prodotto.h"
 
+
 //costruttore del prodotto
 
 Prodotto::Prodotto(const std::string nome, int quantita) {

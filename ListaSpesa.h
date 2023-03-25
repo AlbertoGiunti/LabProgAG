@@ -20,6 +20,12 @@ public:
     //metodo per ottenere il nome della lista della spesa
     const std::string getNomeLista() const;
 
+    //metodo per ottenere la lista dei prodotti
+    const std::list<Prodotto*> getProdotti() const;
+
+    //metodo per ottenere la lista degli observer
+    const std::list<Observer*> getObservers() const;
+
     //metodo per aggiungere un prodotto alla lista dei prodotti
     void addProdotto(Prodotto *p);
 

@@ -9,6 +9,16 @@
 //implementazione del costruttore dell'utente
 Utente::Utente(const std::string &nomeUtente): nomeUtente(nomeUtente) {}
 
+//implementazione del metodo per ottenere il nome dell'utente
+const std::string Utente::getNomeUtente() const {
+    return std::string();
+}
+
+//implementazione del metodo per ottenere la lista delle liste
+const std::list<ListaSpesa *> Utente::getListaSpesa() const {
+    return std::list<ListaSpesa *>();
+}
+
 //implementazione del metodo addListaSpesa
 void Utente::addListaSpesa(ListaSpesa *l) {
     liste.push_back(l);
@@ -38,3 +48,4 @@ void Utente::showListe() {
 //implementazione del distruttore dell'utente
 Utente::~Utente() {
 }
+

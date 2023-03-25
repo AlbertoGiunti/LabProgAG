@@ -16,8 +16,11 @@ public:
     //costruttore dell'utente
     explicit Utente(const std::string &nomeUtente);
 
-    //metodo per mostrare le liste dell'utente
-    void showListe();
+    //metodo per ottenere il nome dell'utente
+    const std::string getNomeUtente() const;
+
+    //metodo per ottenere la lista delle liste
+    const std::list<ListaSpesa*> getListaSpesa() const;
 
     //metodo per aggiungere una lista alla lista delle liste
     void addListaSpesa(ListaSpesa *l);
@@ -27,6 +30,9 @@ public:
 
     //funzione update per l'observer
     void update(ListaSpesa* l) override;
+
+    //metodo per mostrare le liste dell'utente
+    void showListe();
 
     //distruttore dell'utente
     virtual ~Utente();

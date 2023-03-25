@@ -8,6 +8,21 @@
 //costruttore della lista della spesa
 ListaSpesa::ListaSpesa(const std::string &nomeLista) : nomeLista(nomeLista) {}
 
+//implementazione metodo per ottenere il nome della lista della spesa
+const std::string ListaSpesa::getNomeLista() const {
+    return nomeLista;
+}
+
+//implementazione metodo getProdotti
+const std::list<Prodotto *> ListaSpesa::getProdotti() const {
+    return std::list<Prodotto *>();
+}
+
+//implementazione metodo getObservers
+const std::list<Observer *> ListaSpesa::getObservers() const {
+    return std::list<Observer *>();
+}
+
 //implementazione metodo che aggiunge elementi in coda alla lista della spesa
 void ListaSpesa::addProdotto(Prodotto *p) {
     prodotti.push_back(p);
@@ -72,10 +87,6 @@ void ListaSpesa::showListaSpesa() {
     }
 }
 
-//implementazione metodo per ottenere il nome della lista della spesa
-const std::string ListaSpesa::getNomeLista() const {
-    return nomeLista;
-}
 
 //Distruttore della lista della spesa
 ListaSpesa::~ListaSpesa() {
