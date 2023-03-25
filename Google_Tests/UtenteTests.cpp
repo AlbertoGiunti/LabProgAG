@@ -19,7 +19,7 @@ TEST(Utente, addListaSpesa) {
 
     // controllo che l'utente sia stato aggiunto alla lista degli osservatori della lista
     ASSERT_EQ(1, ls.getObservers().size());
-    ASSERT_EQ("Alberto", ls.getObservers().getNomeUtente());
+    ASSERT_TRUE(ls.getObservers().front() == u);
 
     // controllo che la lista sia stata aggiunta alla lista degli utenti
     ASSERT_EQ(1, u.getListaSpesa().size());

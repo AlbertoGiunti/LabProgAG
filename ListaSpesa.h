@@ -30,7 +30,7 @@ public:
     void addProdotto(Prodotto *p);
 
     //metodo per modificare la quantità di un prodotto
-    void modifyProdotto(Prodotto *p, int q);
+    void modifyProdotto(Prodotto *p, int q); //TODO se non è presente il prodotto lo aggiunge
 
     //metodo per rimuovere un prodotto
     void removeProdotto(Prodotto *p);
@@ -43,6 +43,8 @@ public:
 
     //implementazione del metodo detach
     void detach(Observer *o) override;
+
+    //TODO metodo per verificare su un utente sta osservano o meno questa lista
 
     //implementazione del metodo notify
     void notify() override;
