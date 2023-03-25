@@ -16,6 +16,12 @@ TEST(Utente, addListaSpesa) {
     Utente u("Alberto");
     ListaSpesa ls("ListaProva1");
     u.addListaSpesa(&ls);
+
+    // controllo che l'utente sia stato aggiunto alla lista degli osservatori della lista
+    ASSERT_EQ(1, ls.getObservers().size());
+    ASSERT_EQ("Alberto", ls.getObservers().getNomeUtente());
+
+    // controllo che la lista sia stata aggiunta alla lista degli utenti
     ASSERT_EQ(1, u.getListaSpesa().size());
     ASSERT_EQ("ListaProva1", u.getListaSpesa().front()->getNomeLista());
 }
@@ -25,9 +31,12 @@ TEST(Utente, removeListaSpesa) {
     Utente u("Alberto");
     ListaSpesa ls("ListaProva");
     u.addListaSpesa(&ls);
-    ASSERT_EQ("Alberto", ls.getObservers().getNomeUtente());
     u.removeListaSpesa(&ls);
+
+    // controllo che l'utente sia stato rimosso dalla lista degli osservatori della lista
     ASSERT_EQ(0, ls.getObservers().size());
+
+    // controllo che la lista sia stata rimossa dalla lista degli utenti
     ASSERT_EQ(0, u.getListaSpesa().size());
 }
 
@@ -43,5 +52,7 @@ TEST(Utente, update) {
     u.addListaSpesa(&ls1);
     u.addListaSpesa(&ls2);
     u.update(&ls1);
+
+    // controllo che la lista sia stata aggiornata
     ASSERT_EQ(2, u.getListaSpesa().front()->getProdotti().front()->getQuantita());
 }

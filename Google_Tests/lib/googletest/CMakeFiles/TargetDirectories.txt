@@ -1,0 +1,4 @@
+/usr/src/googletest/googletest/CMakeFiles/gtest.dir
+/usr/src/googletest/googletest/CMakeFiles/gtest_main.dir
+/usr/src/googletest/googletest/CMakeFiles/edit_cache.dir
+/usr/src/googletest/googletest/CMakeFiles/rebuild_cache.dir

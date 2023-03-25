@@ -9,6 +9,8 @@
 //test del costruttore
 TEST(Prodotto, costruttore) {
     Prodotto p("pasta", 10);
+
+    //test del nome e dellq quantità
     ASSERT_EQ("pasta", p.getNome());
     ASSERT_EQ(10, p.getQuantita());
 }
@@ -16,12 +18,16 @@ TEST(Prodotto, costruttore) {
 //test del metodo getNome
 TEST(Prodotto, getNome) {
     Prodotto p("pasta", 10);
+
+    //test del nome
     ASSERT_EQ("pasta", p.getNome());
 }
 
 //test del metodo getQuantita
 TEST(Prodotto, getQuantita) {
     Prodotto p("pasta", 10);
+
+    //test della quantità
     ASSERT_EQ(10, p.getQuantita());
 }
 
@@ -29,6 +35,8 @@ TEST(Prodotto, getQuantita) {
 TEST(Prodotto, setQuantita) {
     Prodotto p("pasta", 10);
     p.setQuantita(20);
+
+    //test della quantità
     ASSERT_EQ(20, p.getQuantita());
 }
 
