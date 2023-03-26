@@ -11,12 +11,12 @@ Utente::Utente(const std::string &nomeUtente): nomeUtente(nomeUtente) {}
 
 //implementazione del metodo per ottenere il nome dell'utente
 const std::string Utente::getNomeUtente() const {
-    return std::string();
+    return nomeUtente;
 }
 
 //implementazione del metodo per ottenere la lista delle liste
 const std::list<ListaSpesa *> Utente::getListaSpesa() const {
-    return std::list<ListaSpesa *>();
+    return liste;
 }
 
 //implementazione del metodo addListaSpesa
@@ -27,12 +27,12 @@ void Utente::addListaSpesa(ListaSpesa *l) {
 
 //implementazione del metodo removeListaSpesa
 void Utente::removeListaSpesa(ListaSpesa *l) {
+    l->detach(this);
     liste.remove(l);
 }
 
 //implementazione del metodo update
 void Utente::update(ListaSpesa *l) {
-    l->detach(this);
     this->removeListaSpesa(l);
     std::cout << "REMOVE " << this->nomeUtente << "  " << l->getNomeLista() << std::endl;
 }

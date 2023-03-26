@@ -15,12 +15,23 @@ const std::string ListaSpesa::getNomeLista() const {
 
 //implementazione metodo getProdotti
 const std::list<Prodotto *> ListaSpesa::getProdotti() const {
-    return std::list<Prodotto *>();
+    return prodotti;
 }
 
 //implementazione metodo getObservers
 const std::list<Observer *> ListaSpesa::getObservers() const {
-    return std::list<Observer *>();
+    return observers;
+}
+
+//implementazione metodo per vedere se un utente sta osservando la lista della spesa
+bool ListaSpesa::isObserved(Observer *o) {
+    bool trovato = false;
+    for(auto it = observers.begin(); it != observers.end() && !trovato; it++){
+        if((*it) == o){
+            trovato = true;
+        }
+    }
+    return trovato;
 }
 
 //implementazione metodo che aggiunge elementi in coda alla lista della spesa
@@ -45,6 +56,13 @@ void ListaSpesa::modifyProdotto(Prodotto *p, int q) {
     }
     if(!modificato){
         std::cout<<"Prodotto non presente nella lista" << std::endl;
+        if(q != 0){
+            this->addProdotto(p);
+            std::cout<<"Prodotto aggiunto" << std::endl;
+        }
+        else {
+            std::cout<<"Prodotto non aggiunto, la quantità è 0" << std::endl;
+        }
     }
 }
 
@@ -92,5 +110,6 @@ void ListaSpesa::showListaSpesa() {
 ListaSpesa::~ListaSpesa() {
     std::cout << "Lista della spesa: " << nomeLista << " eliminata" << std::endl;
 }
+
 
 

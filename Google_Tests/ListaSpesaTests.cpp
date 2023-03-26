@@ -49,8 +49,8 @@ TEST(ListaSpesa, modifyProdottoPresente) {
     ASSERT_EQ(2, ls.getProdotti().front()->getQuantita());
 }
 
-//test modifyProdotto con il prodotto non presente nella lista
-TEST(ListaSpesa, modifyProdottoNonPresente) {
+//test modifyProdotto con il prodotto non presente nella lista e quantità maggiore di 0
+TEST(ListaSpesa, modifyProdottoNonPresenteQuantitaDiversaZero) {
     ListaSpesa ls("ListaProva");
     Prodotto p1("ProdProva1", 1);
     Prodotto p2("ProdProva2", 2);
@@ -58,13 +58,31 @@ TEST(ListaSpesa, modifyProdottoNonPresente) {
     ls.modifyProdotto(&p2, 2);
 
     // controllo che il prodotto già presente sia rimasto invariato
-    ASSERT_EQ(1, ls.getProdotti().size());
     ASSERT_EQ("ProdProva1", ls.getProdotti().front()->getNome());
     ASSERT_EQ(1, ls.getProdotti().front()->getQuantita());
+    // controllo che il prodotto non presente sia stato aggiunto correttamente
+    ASSERT_EQ(2, ls.getProdotti().size());
+    ASSERT_EQ("ProdProva2", ls.getProdotti().back()->getNome());
+    ASSERT_EQ(2, ls.getProdotti().back()->getQuantita());
 }
 
-//test modifyProdotto con la quantità uguale a 0
-TEST(ListaSpesa, modifyProdottoQuantitaZero) {
+//test modifyProdotto con il prodotto non presente nella lista e quantità uguale a 0
+TEST(ListaSpesa, modifyProdottoNonPresenteQuantitaZero) {
+    ListaSpesa ls("ListaProva");
+    Prodotto p1("ProdProva1", 1);
+    Prodotto p2("ProdProva2", 2);
+    ls.addProdotto(&p1);
+    ls.modifyProdotto(&p2, 0);
+
+    //controllo che il prodotto già presente sia rimasto invariato
+    ASSERT_EQ("ProdProva1", ls.getProdotti().front()->getNome());
+    ASSERT_EQ(1, ls.getProdotti().front()->getQuantita());
+    //controllo che il prodotto non presente non sia stato aggiunto
+    ASSERT_EQ(1, ls.getProdotti().size());
+}
+
+//test modifyProdotto di un prodotto già presente con la quantità uguale a 0
+TEST(ListaSpesa, modifyProdottoPresenteQuantitaZero) {
     ListaSpesa ls("ListaProva");
     Prodotto p1("ProdProva1", 1);
     Prodotto p2("ProdProva2", 2);
@@ -88,7 +106,7 @@ TEST(ListaSpesa, removeProdotto) {
     ls.removeProdotto(&p2);
 
     //controllo che il prodotto sia stato rimosso correttamente
-    ASSERT_EQ(2, ls.getProdotti().size());
+    ASSERT_EQ(1, ls.getProdotti().size());
     ASSERT_EQ("ProdProva1", ls.getProdotti().front()->getNome());
 }
 
@@ -118,4 +136,15 @@ TEST(ListaSpesa, detach) {
     ASSERT_EQ(0, ls.getObservers().size());
 }
 
+//test isObserving
+TEST(ListaSpesa, isObserved) {
+    ListaSpesa ls("ListaProva");
+    Prodotto p("ProdProva", 1);
+    ls.addProdotto(&p);
+    Utente *o = new Utente("UtenteProva");
+    ls.attach(o);
+
+    //controllo che l'utente sia stato attaccato correttamente
+    ASSERT_TRUE(ls.isObserved(o));
+}
 

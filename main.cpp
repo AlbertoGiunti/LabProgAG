@@ -71,6 +71,9 @@ int main() {
     u3->addListaSpesa(l5);
     u3->showListe();
 
+    l2->modifyProdotto(&acqua, 3);
+    l2->modifyProdotto(&burro, 0);
+
     //prova dell'observer
 
     l1->removeProdotto(&pasta);
