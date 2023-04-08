@@ -41,6 +41,8 @@ public:
     //metodo per stampare la lista della spesa
     void showListState() const;
 
+    const std::list<Prodotto *> &getProdotti() const;
+
     int getTotaleProdotti() const;
 
     void setTotaleProdotti(int totaleProdotti);

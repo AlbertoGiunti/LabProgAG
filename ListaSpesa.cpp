@@ -35,7 +35,7 @@ bool ListaSpesa::isObserved(Observer *o) {
 
 //implementazione metodo che aggiunge elementi in coda alla lista della spesa
 void ListaSpesa::addProdotto(TipoProdotto &tp, int q) {
-    Prodotto *p = new Prodotto(&tp, q, false);
+    Prodotto *p = new Prodotto(&tp, q);
     totaleProdotti += q;
     totaleProdottiNonComprati += q;
     prodotti.push_back(p);
@@ -46,20 +46,16 @@ void ListaSpesa::addProdotto(TipoProdotto &tp, int q) {
 void ListaSpesa::modifyProdotto(TipoProdotto &tp, int q) {
     bool modificato = false;
     for(auto it = prodotti.begin(); it != prodotti.end() && !modificato; it++){
-        if((*it)->getNomeTipo() == tp.getNome()){
+        if((*it)->getNomeTipo() == tp.getNome() && !(*it)->isComprato()){
             int c = (*it)->getQuantita();
             if(q == 0){
                 totaleProdotti -= c;
-                if((*it)->isComprato()) {
-                    totaleProdottiComprati -= c;
-                }
-                else {
-                    totaleProdottiNonComprati -= c;
-                }
+                totaleProdottiNonComprati -= c;
                 removeProdotto(tp);
             }
             else {
                 totaleProdotti = totaleProdotti -c +q;
+                totaleProdottiNonComprati = totaleProdottiNonComprati -c +q;
                 (*it)->setQuantita(q);
             }
             modificato = true;
@@ -67,7 +63,7 @@ void ListaSpesa::modifyProdotto(TipoProdotto &tp, int q) {
         }
     }
     if(!modificato){
-        std::cout<<"Prodotto non presente nella lista" << std::endl;
+        throw std::runtime_error("Prodotto non presente nella lista");
     }
 }
 
@@ -77,6 +73,9 @@ void ListaSpesa::removeProdotto(TipoProdotto &tp) {
     for(auto it = prodotti.begin(); it != prodotti.end() && !trovato; it++){
         if((*it)->getNomeTipo() == tp.getNome()){
             totaleProdotti -= (*it)->getQuantita();
+            if(!(*it)->isComprato()){
+                totaleProdottiNonComprati -= (*it)->getQuantita();
+            }
             prodotti.remove(*it);
             trovato = true;
             notify();
@@ -104,7 +103,6 @@ void ListaSpesa::detach(Observer *o) {
 
 //implementazione del metodo notify
 void ListaSpesa::notify() {
-    std::cout << "notify()" << std::endl;
     for(auto it = observers.begin(); it != observers.end(); ) {
         auto tt= it;
         it++;
@@ -184,6 +182,10 @@ void ListaSpesa::setTotaleProdottiNonComprati(int totaleProdottiNonComprati) {
 //Distruttore della lista della spesa
 ListaSpesa::~ListaSpesa() {
     std::cout << "Lista della spesa: " << nomeLista << " eliminata" << std::endl;
+}
+
+const std::list<Prodotto *> &ListaSpesa::getProdotti() const {
+    return prodotti;
 }
 
 

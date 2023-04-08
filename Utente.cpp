@@ -38,7 +38,7 @@ void Utente::update(ListaSpesa *l) {
         std::cout << "REMOVE " << this->nomeUtente << "  " << l->getNomeLista() << std::endl;
     }
     else{
-        std::cout << "La lista " << l->getNomeLista() << "è stata modificata" << std::endl;
+        std::cout << "La lista " << l->getNomeLista() << " è stata modificata" << std::endl;
     }
 }
 
@@ -47,6 +47,7 @@ Utente::~Utente() {
 }
 
 void Utente::listsState() {
+    std::cout << "Utente: " << nomeUtente << std::endl;
     //quante liste devono essere completate
     int listToComplete = 0;
     for(auto it = liste.begin(); it != liste.end(); it++){
@@ -55,6 +56,6 @@ void Utente::listsState() {
         }
         (*it)->showListState();
     }
-    std::cout << "Lista da completare: " << listToComplete << std::endl;
+    std::cout << "Liste da completare: " << listToComplete << std::endl;
 }
 

@@ -65,6 +65,7 @@ int main() {
 
     l2->modifyProdotto(acqua, 3);
     l2->modifyProdotto(burro, 0);
+    l5->buyProdotto(mela);
 
     //prova dell'observer
 

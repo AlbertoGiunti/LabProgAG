@@ -6,7 +6,7 @@
 
 
 //costruttore del prodotto che controlla che il nome sia diverso da una stringa vuota e la quantità sia maggiore di 0
-Prodotto::Prodotto(TipoProdotto *t, int q, bool c)  {
+Prodotto::Prodotto(TipoProdotto *t, int q)  {
     if(t){
         tipo = t;
     }
