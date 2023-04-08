@@ -48,7 +48,7 @@ bool Prodotto::isComprato() const {
     return comprato;
 }
 
-//metod per modificare lo stato del prodotto
+//metodo per modificare lo stato del prodotto
 void Prodotto::setComprato(bool c) {
     Prodotto::comprato = c;
 }
