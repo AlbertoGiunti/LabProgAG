@@ -14,6 +14,8 @@ public:
     //metodo per aggiornare la lista
     virtual void update(ListaSpesa* l) = 0;
 
+
+    virtual ~Observer() = default;
 };
 
 #endif //LABPROGAG_OBSERVER_H

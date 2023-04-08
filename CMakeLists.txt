@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(Google_Tests)
 
-set(SOURCE_FILES Utente.cpp Utente.h ListaSpesa.cpp ListaSpesa.h Prodotto.cpp Prodotto.h Observer.h Subject.h Google_Tests/ProdottoTests.cpp)
+set(SOURCE_FILES Utente.cpp Utente.h ListaSpesa.cpp ListaSpesa.h Prodotto.cpp Prodotto.h Observer.h Subject.h Google_Tests/ProdottoTests.cpp TipoProdotto.cpp TipoProdotto.h)
 
 add_executable(LabProgAG main.cpp)
 add_library(core ${SOURCE_FILES})

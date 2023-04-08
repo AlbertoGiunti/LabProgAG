@@ -21,6 +21,8 @@ public:
     //metodo per notificare gli observer
     virtual void notify() = 0;
 
+
+    virtual ~Subject() = default;
 };
 
 #endif //LABPROGAG_SUBJECT_H

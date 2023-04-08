@@ -5,14 +5,16 @@
 #ifndef LABPROGAG_PRODOTTO_H
 #define LABPROGAG_PRODOTTO_H
 #include <iostream>
+#include "TipoProdotto.h"
+
 
 class Prodotto {
 public:
     //costruttore del prodotto
-    Prodotto(const std::string nome, int quantita);
+    Prodotto(TipoProdotto* tipo, int quantita, bool comprato);
 
     //metodo per ottenere il nome del prodotto
-    const std::string getNome() const;
+    const std::string getNomeTipo() const;
 
     //metodo per ottenere la quantità del prodotto
     int getQuantita() const;
@@ -20,12 +22,16 @@ public:
     //metodo per modificare la quantità del prodotto
     void setQuantita(int quantita);
 
-    //distruttore del prodotto
-    virtual ~Prodotto();
+    //metodo per verificare se il prodotto è stato comprato
+    bool isComprato() const;
+
+    //metod per modificare lo stato del prodotto
+    void setComprato(bool c);
 
 private:
-    std::string nome;
+    TipoProdotto* tipo;
     int quantita;
+    bool comprato;
 };
 
 

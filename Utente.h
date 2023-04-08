@@ -31,8 +31,8 @@ public:
     //funzione update per l'observer
     void update(ListaSpesa* l) override;
 
-    //metodo per mostrare le liste dell'utente
-    void showListe();
+    //metodo per stampare lo stato delle liste
+    void listsState();
 
     //distruttore dell'utente
     virtual ~Utente();

@@ -14,6 +14,8 @@ TEST(ListaSpesa, costruttore) {
     ASSERT_EQ("ListaProva", l.getNomeLista());
 }
 
+
+
 //test getNomeLista
 TEST(ListaSpesa, getNomeLista) {
     ListaSpesa l("ListaProva");

@@ -20,9 +20,6 @@ public:
     //metodo per ottenere il nome della lista della spesa
     const std::string getNomeLista() const;
 
-    //metodo per ottenere la lista dei prodotti
-    const std::list<Prodotto*> getProdotti() const;
-
     //metodo per ottenere la lista degli observer
     const std::list<Observer *> getObservers() const;
 
@@ -30,22 +27,43 @@ public:
     bool isObserved(Observer *o);
 
     //metodo per aggiungere un prodotto alla lista dei prodotti
-    void addProdotto(Prodotto *p);
+    void addProdotto(TipoProdotto &tp, int q);
 
     //metodo per modificare la quantità di un prodotto
-    void modifyProdotto(Prodotto *p, int q);
+    void modifyProdotto(TipoProdotto &tp, int q);
+
+    //metodo per acquistare un prodotto
+    void buyProdotto(TipoProdotto &tp);
 
     //metodo per rimuovere un prodotto
-    void removeProdotto(Prodotto *p);
+    void removeProdotto(TipoProdotto &tp);
 
     //metodo per stampare la lista della spesa
-    void showListaSpesa();
+    void showListState() const;
+
+    int getTotaleProdotti() const;
+
+    void setTotaleProdotti(int totaleProdotti);
+
+    int getTotaleProdottiComprati() const;
+
+    void setTotaleProdottiComprati(int totaleProdottiComprati);
+
+    int getTotaleProdottiNonComprati() const;
+
+    void setTotaleProdottiNonComprati(int totaleProdottiNonComprati);
 
     //implementazione del metodo attach
     void attach(Observer *o) override;
 
     //implementazione del metodo detach
     void detach(Observer *o) override;
+
+    //metodo per sapere se la lista è stata completata
+    bool isCompletata() const;
+
+    //metodo per settare la lista come completata
+    void setCompletata(bool c);
 
     //implementazione del metodo notify
     void notify() override;
@@ -55,9 +73,14 @@ public:
 
 private:
     std::string nomeLista;
-    std::list<Prodotto*> prodotti;
+    std::list<Prodotto *> prodotti;
     std::list<Observer*> observers;
+    int totaleProdotti;
+    int totaleProdottiComprati;
+    int totaleProdottiNonComprati;
+    bool completata;
 };
+
 
 
 

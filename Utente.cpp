@@ -33,19 +33,28 @@ void Utente::removeListaSpesa(ListaSpesa *l) {
 
 //implementazione del metodo update
 void Utente::update(ListaSpesa *l) {
-    this->removeListaSpesa(l);
-    std::cout << "REMOVE " << this->nomeUtente << "  " << l->getNomeLista() << std::endl;
-}
-
-//implementazione del metodo showListe
-void Utente::showListe() {
-    std::cout << "Elenco liste" << this->nomeUtente << ":" << std::endl;
-    for (auto i = liste.begin(); i != liste.end(); i++) {
-        std::cout << (*i)->getNomeLista() << std::endl;
+    if(l->isCompletata()) {
+        this->removeListaSpesa(l);
+        std::cout << "REMOVE " << this->nomeUtente << "  " << l->getNomeLista() << std::endl;
+    }
+    else{
+        std::cout << "La lista " << l->getNomeLista() << "è stata modificata" << std::endl;
     }
 }
 
 //implementazione del distruttore dell'utente
 Utente::~Utente() {
+}
+
+void Utente::listsState() {
+    //quante liste devono essere completate
+    int listToComplete = 0;
+    for(auto it = liste.begin(); it != liste.end(); it++){
+        if(!(*it)->isCompletata()){
+            listToComplete++;
+        }
+        (*it)->showListState();
+    }
+    std::cout << "Lista da completare: " << listToComplete << std::endl;
 }
 
