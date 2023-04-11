@@ -42,10 +42,7 @@ void Utente::update(ListaSpesa *l) {
     }
 }
 
-//implementazione del distruttore dell'utente
-Utente::~Utente() {
-}
-
+//implementazione del metodo listsState
 void Utente::listsState() {
     std::cout << "Utente: " << nomeUtente << std::endl;
     //quante liste devono essere completate
@@ -57,5 +54,10 @@ void Utente::listsState() {
         (*it)->showListState();
     }
     std::cout << "Liste da completare: " << listToComplete << std::endl;
+}
+
+
+//implementazione del distruttore dell'utente
+Utente::~Utente() {
 }
 

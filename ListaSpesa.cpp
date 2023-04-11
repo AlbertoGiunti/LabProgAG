@@ -35,7 +35,7 @@ bool ListaSpesa::isObserved(Observer *o) {
 
 //implementazione metodo che aggiunge elementi in coda alla lista della spesa
 void ListaSpesa::addProdotto(const TipoProdotto &tp, int q) {
-    Prodotto *p = new Prodotto(&tp, q);
+    Prodotto *p = new Prodotto(tp, q);
     totaleProdotti += q;
     totaleProdottiNonComprati += q;
     prodotti.push_back(p);

@@ -11,7 +11,7 @@
 class Prodotto {
 public:
     //costruttore del prodotto
-    Prodotto(const TipoProdotto *tipo, int quantita);
+    Prodotto(const TipoProdotto &tipo, int quantita);
 
     //metodo per ottenere il nome del prodotto
     const std::string getNomeTipo() const;
@@ -29,7 +29,7 @@ public:
     void setComprato(bool c);
 
 private:
-    const TipoProdotto* tipo;
+    const TipoProdotto &tipo;
     int quantita;
     bool comprato;
 };

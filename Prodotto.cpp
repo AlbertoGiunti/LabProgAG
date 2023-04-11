@@ -6,13 +6,7 @@
 
 
 //costruttore del prodotto che controlla che il nome sia diverso da una stringa vuota e la quantità sia maggiore di 0
-Prodotto::Prodotto(const TipoProdotto *t, int q)  {
-    if(t){
-        tipo = t;
-    }
-    else{
-        throw std::runtime_error("Tipo non valido");
-    }
+Prodotto::Prodotto(const TipoProdotto &t, int q): tipo(t), quantita(q), comprato(false) {
     if(q > 0){
         quantita = q;
     }
@@ -24,7 +18,7 @@ Prodotto::Prodotto(const TipoProdotto *t, int q)  {
 
 //metodo per ottenere il tipo del prodotto
 const std::string Prodotto::getNomeTipo() const {
-    return tipo->getNome();
+    return tipo.getNome();
 }
 
 
