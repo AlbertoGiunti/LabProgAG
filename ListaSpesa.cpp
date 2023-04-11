@@ -34,7 +34,7 @@ bool ListaSpesa::isObserved(Observer *o) {
 }
 
 //implementazione metodo che aggiunge elementi in coda alla lista della spesa
-void ListaSpesa::addProdotto(TipoProdotto &tp, int q) {
+void ListaSpesa::addProdotto(const TipoProdotto &tp, int q) {
     Prodotto *p = new Prodotto(&tp, q);
     totaleProdotti += q;
     totaleProdottiNonComprati += q;
@@ -43,19 +43,17 @@ void ListaSpesa::addProdotto(TipoProdotto &tp, int q) {
 }
 
 //implementazione metodo che modifica un prodotto della lista della spesa, se la nuova quantità del prodotto (q) è 0 cancella il prodotto dalla lista, se la lista è vuota cancella la lista.
-void ListaSpesa::modifyProdotto(TipoProdotto &tp, int q) {
+void ListaSpesa::modifyProdotto(const TipoProdotto &tp, int q) {
     bool modificato = false;
     for(auto it = prodotti.begin(); it != prodotti.end() && !modificato; it++){
         if((*it)->getNomeTipo() == tp.getNome() && !(*it)->isComprato()){
             int c = (*it)->getQuantita();
             if(q == 0){
-                totaleProdotti -= c;
-                totaleProdottiNonComprati -= c;
                 removeProdotto(tp);
             }
             else {
-                totaleProdotti = totaleProdotti -c +q;
-                totaleProdottiNonComprati = totaleProdottiNonComprati -c +q;
+                totaleProdotti = (totaleProdotti -c)+q;
+                totaleProdottiNonComprati = (totaleProdottiNonComprati -c) +q;
                 (*it)->setQuantita(q);
             }
             modificato = true;
@@ -68,7 +66,7 @@ void ListaSpesa::modifyProdotto(TipoProdotto &tp, int q) {
 }
 
 //implementazione metodo per rimuovere un prodotto
-void ListaSpesa::removeProdotto(TipoProdotto &tp) {
+void ListaSpesa::removeProdotto(const TipoProdotto &tp) {
     bool trovato = false;
     for(auto it = prodotti.begin(); it != prodotti.end() && !trovato; it++){
         if((*it)->getNomeTipo() == tp.getNome()){
@@ -126,7 +124,7 @@ void ListaSpesa::showListState() const{
 }
 
 //implementazione metodo per comprare un prodotto
-void ListaSpesa::buyProdotto(TipoProdotto &tp) {
+void ListaSpesa::buyProdotto(const TipoProdotto &tp) {
     bool trovato = false;
     for(auto it = prodotti.begin(); it != prodotti.end() && !trovato; it++){
         if((*it)->getNomeTipo() == tp.getNome()){

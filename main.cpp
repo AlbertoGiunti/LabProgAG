@@ -63,9 +63,9 @@ int main() {
     l5->addProdotto(mela,20);
 
 
-    l2->modifyProdotto(acqua, 3);
-    l2->modifyProdotto(burro, 0);
-    l5->buyProdotto(mela);
+    l2->modifyProdotto(latte, 3);
+    l2->modifyProdotto(uova, 0);
+    l5->buyProdotto(formaggio);
 
     //prova dell'observer
 

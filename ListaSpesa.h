@@ -27,16 +27,16 @@ public:
     bool isObserved(Observer *o);
 
     //metodo per aggiungere un prodotto alla lista dei prodotti
-    void addProdotto(TipoProdotto &tp, int q);
+    void addProdotto(const TipoProdotto &tp, int q);
 
     //metodo per modificare la quantità di un prodotto
-    void modifyProdotto(TipoProdotto &tp, int q);
+    void modifyProdotto(const TipoProdotto &tp, int q);
 
     //metodo per acquistare un prodotto
-    void buyProdotto(TipoProdotto &tp);
+    void buyProdotto(const TipoProdotto &tp);
 
     //metodo per rimuovere un prodotto
-    void removeProdotto(TipoProdotto &tp);
+    void removeProdotto(const TipoProdotto &tp);
 
     //metodo per stampare la lista della spesa
     void showListState() const;
